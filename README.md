@@ -13,7 +13,7 @@ physicians to potentially call on. They have capacity for maybe 300 calls a week
 This model ranks every physician by their likelihood to adopt Tirzepatide —
 so the rep spends time on the right doctors.
 
-**Live dashboard → [your-streamlit-url-here]**
+**Live dashboard → https://pharma-sales-recommender.streamlit.app/**
 
 ---
 
