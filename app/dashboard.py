@@ -627,7 +627,7 @@ elif page == "Model Validation":
     ax.fill_between(pct_pop, random_cap, model_pct_cap, alpha=0.1, color="#1B4F8A")
     idx20 = int(0.20 * len(model_sorted))
     ax.annotate(
-        f"Top 20% captures\n{:.0f}% of adopters".format(model_pct_cap[idx20]),
+        "Top 20% captures\n{:.0f}% of adopters".format(model_pct_cap[idx20]),
         xy=(20, model_pct_cap[idx20]),
         xytext=(35, model_pct_cap[idx20] - 12),
         fontsize=9, color="#1B4F8A", fontweight="bold",
