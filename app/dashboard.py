@@ -115,49 +115,9 @@ targets, physician_df, interactions, ab_results = load_data()
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Top header with horizontal nav ────────────────────────────────────────────
-st.markdown("""
-    <div style="background:#0A2342; padding:14px 24px; border-radius:8px;
-                margin-bottom:20px;">
+# ── Navigation header ──────────────────────────────────────────────────────────
+st.markdown('<div style="background:#0A2342;padding:14px 24px;border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;"><div><div style="font-size:16px;font-weight:700;color:white;">💊 GLP-1 Sales Intelligence Platform</div><div style="font-size:11px;color:#8FB3D9;margin-top:2px;">Tirzepatide · California Medicare · 2023 · CMS Part D Data · 15,289 Physicians</div></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><a href="?nav=Target+List" style="background:rgba(255,255,255,0.12);color:white;padding:7px 18px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.25);">🎯 Target List</a><a href="?nav=Physician+Profile" style="background:rgba(255,255,255,0.12);color:white;padding:7px 18px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.25);">👨‍⚕️ Physician Profile</a><a href="?nav=Model+Validation" style="background:rgba(255,255,255,0.12);color:white;padding:7px 18px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.25);">📊 Model Validation</a></div></div>', unsafe_allow_html=True)
 
-        <div style="display:flex; align-items:center;
-                    justify-content:space-between; flex-wrap:wrap; gap:12px;">
-
-            <div>
-                <div style="font-size:16px; font-weight:700; color:white;">
-                    💊 GLP-1 Sales Intelligence Platform
-                </div>
-                <div style="font-size:11px; color:#8FB3D9; margin-top:2px;">
-                    Tirzepatide · California Medicare · 2023 ·
-                    CMS Part D Data · 15,289 Physicians
-                </div>
-            </div>
-
-            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <a href="?nav=Target+List"
-                   style="background:rgba(255,255,255,0.12); color:white;
-                          padding:7px 18px; border-radius:20px; font-size:12px;
-                          font-weight:500; text-decoration:none;
-                          border:1px solid rgba(255,255,255,0.25);">
-                   🎯 Target List
-                </a>
-                <a href="?nav=Physician+Profile"
-                   style="background:rgba(255,255,255,0.12); color:white;
-                          padding:7px 18px; border-radius:20px; font-size:12px;
-                          font-weight:500; text-decoration:none;
-                          border:1px solid rgba(255,255,255,0.25);">
-                   👨‍⚕️ Physician Profile
-                </a>
-                <a href="?nav=Model+Validation"
-                   style="background:rgba(255,255,255,0.12); color:white;
-                          padding:7px 18px; border-radius:20px; font-size:12px;
-                          font-weight:500; text-decoration:none;
-                          border:1px solid rgba(255,255,255,0.25);">
-                   📊 Model Validation
-                </a>
-            </div>
-        </div>
-    </div>
-""", unsafe_allow_html=True)
 
 # ── Read active page from URL params ──────────────────────────────────────────
 nav = st.query_params.get("nav", "Target List")
