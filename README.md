@@ -94,9 +94,7 @@ pharma-sales-recommender/
 ├── data/
 │   └── figures/              # EDA and validation charts
 ├── notebooks/
-│   ├── phase1_data.ipynb     # Data acquisition & cleaning
-│   ├── phase2_model.ipynb    # EDA & scoring model
-│   └── phase3_validation.ipynb # A/B test & lift analysis
+│   ├── Pharma_Sales_Recommender.ipynb     
 ├── requirements.txt
 └── README.md
 ```
