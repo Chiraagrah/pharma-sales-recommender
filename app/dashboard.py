@@ -34,6 +34,21 @@ st.markdown("""
         color: white; padding: 6px 14px; border-radius: 20px;
         font-size: 12px; font-weight: 500;
     }
+    div.stButton > button {
+        background: white;
+        border: 1px solid #E2E8F0;
+        color: #0A2342;
+        font-weight: 500;
+        font-size: 13px;
+        border-radius: 8px;
+        padding: 8px 16px;
+        transition: all 0.2s;
+    }
+    div.stButton > button:hover {
+        background: #0A2342;
+        color: white;
+        border-color: #0A2342;
+    }
     .metric-row { display: flex; gap: 16px; margin-bottom: 24px; }
     .metric-card {
         background: white; border: 1px solid #E2E8F0;
