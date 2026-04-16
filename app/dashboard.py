@@ -20,9 +20,6 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
     .main { background-color: #F8F9FA; }
-    [data-testid="stSidebar"] { background-color: #0A2342; padding-top: 1rem; }
-    [data-testid="stSidebar"] * { color: #E8EDF2 !important; }
-    [data-testid="stSidebar"] hr { border-color: #1E3A5F; }
     .header-bar {
         background: linear-gradient(135deg, #0A2342 0%, #1B4F8A 100%);
         padding: 20px 32px; border-radius: 8px; margin-bottom: 24px;
@@ -83,15 +80,9 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer    {visibility: hidden;}
     header    {visibility: hidden;}
-    [data-testid="collapsedControl"] {
-    display: none !important;
-    }
-    section[data-testid="stSidebar"] {
-        min-width: 250px !important;
-        max-width: 250px !important;
-        transform: none !important;
-        visibility: visible !important;
-    }
+    [data-testid="stSidebar"] { display: none !important; }
+    [data-testid="collapsedControl"] { display: none !important; }
+    .block-container { padding-top: 1rem !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -124,44 +115,56 @@ targets, physician_df, interactions, ab_results = load_data()
 # SIDEBAR
 # ══════════════════════════════════════════════════════════════════════════════
 
-with st.sidebar:
+# ── Top header with horizontal nav ────────────────────────────────────────────
     st.markdown("""
-        <div style="padding: 8px 0 24px 0;">
-            <div style="font-size:11px; font-weight:600; color:#4A7FA5;
-                        letter-spacing:1.5px; text-transform:uppercase;">
-                Professional Style
+        <div style="background:#0A2342; padding:14px 24px; border-radius:8px;
+                    margin-bottom:20px;">
+    
+            <div style="display:flex; align-items:center;
+                        justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    
+                <div>
+                    <div style="font-size:16px; font-weight:700; color:white;">
+                        💊 GLP-1 Sales Intelligence Platform
+                    </div>
+                    <div style="font-size:11px; color:#8FB3D9; margin-top:2px;">
+                        Tirzepatide · California Medicare · 2023 ·
+                        CMS Part D Data · 15,289 Physicians
+                    </div>
+                </div>
+    
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <a href="?nav=Target+List"
+                       style="background:rgba(255,255,255,0.12); color:white;
+                              padding:7px 18px; border-radius:20px; font-size:12px;
+                              font-weight:500; text-decoration:none;
+                              border:1px solid rgba(255,255,255,0.25);">
+                       🎯 Target List
+                    </a>
+                    <a href="?nav=Physician+Profile"
+                       style="background:rgba(255,255,255,0.12); color:white;
+                              padding:7px 18px; border-radius:20px; font-size:12px;
+                              font-weight:500; text-decoration:none;
+                              border:1px solid rgba(255,255,255,0.25);">
+                       👨‍⚕️ Physician Profile
+                    </a>
+                    <a href="?nav=Model+Validation"
+                       style="background:rgba(255,255,255,0.12); color:white;
+                              padding:7px 18px; border-radius:20px; font-size:12px;
+                              font-weight:500; text-decoration:none;
+                              border:1px solid rgba(255,255,255,0.25);">
+                       📊 Model Validation
+                    </a>
+                </div>
             </div>
-            <div style="font-size:20px; font-weight:700; color:white;
-                        margin-top:4px; line-height:1.2;">
-                Sales Intelligence<br>Platform
-            </div>
         </div>
     """, unsafe_allow_html=True)
-    st.markdown("---")
-    page = st.radio(
-        "Navigation",
-        ["Target List", "Physician Profile", "Model Validation"],
-        label_visibility="collapsed"
-    )
-    st.markdown("---")
-    st.markdown("""
-        <div style="font-size:11px; color:#4A7FA5; font-weight:600;
-                    text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">
-            Campaign Details
-        </div>
-        <div style="font-size:13px; color:#B8C4CE; line-height:2;">
-            <b style="color:white;">Drug</b><br>Tirzepatide (Mounjaro)<br><br>
-            <b style="color:white;">Market</b><br>California, 2023<br><br>
-            <b style="color:white;">Data Source</b><br>CMS Medicare Part D<br><br>
-            <b style="color:white;">Model</b><br>Volume-weighted<br>cosine similarity
-        </div>
-    """, unsafe_allow_html=True)
-    st.markdown("---")
-    st.markdown("""
-        <div style="font-size:11px; color:#4A7FA5; text-align:center;">
-            Built with real CMS data<br>15,289 California physicians
-        </div>
-    """, unsafe_allow_html=True)
+    
+    # ── Read active page from URL params ──────────────────────────────────────────
+    nav = st.query_params.get("nav", "Target List")
+    if nav not in ["Target List", "Physician Profile", "Model Validation"]:
+        nav = "Target List"
+    page = nav
 
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 1 — TARGET LIST
