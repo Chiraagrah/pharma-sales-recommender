@@ -93,6 +93,7 @@ pharma-sales-recommender/
 │   └── dashboard.py          # Streamlit dashboard
 ├── data/
 │   └── figures/              # EDA and validation charts
+│   └── processed/
 ├── notebooks/
 │   ├── Pharma_Sales_Recommender.ipynb     
 ├── requirements.txt
