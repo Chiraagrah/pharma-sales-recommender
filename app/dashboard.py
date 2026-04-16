@@ -143,33 +143,16 @@ targets, physician_df, interactions, ab_results = load_data()
 st.markdown('<div style="background:#0A2342;padding:14px 24px;border-radius:8px;margin-bottom:20px;"><div style="font-size:16px;font-weight:700;color:white;">💊 GLP-1 Sales Intelligence Platform</div><div style="font-size:11px;color:#8FB3D9;margin-top:4px;">Tirzepatide · California Medicare · 2023 · CMS Part D Data · 15,289 Physicians</div></div>', unsafe_allow_html=True)
 
 # ── Nav buttons ────────────────────────────────────────────────────────────────
-page = st.session_state.get("page", "Target List")
-
-btn_style_active = """
-    <style>
-    div[data-testid="column"]:nth-child({idx}) div.stButton > button {{
-        background: #0A2342 !important;
-        color: white !important;
-        border-color: #0A2342 !important;
-        font-weight: 600 !important;
-    }}
-    </style>
-"""
-
 nav_cols = st.columns(3)
-pages = ["Target List", "Physician Profile", "Model Validation"]
-icons = ["🎯", "👨‍⚕️", "📊"]
-
-for i, (col, label, icon) in enumerate(zip(nav_cols, pages, icons)):
-    with col:
-        if page == label:
-            st.markdown(
-                btn_style_active.format(idx=i+1),
-                unsafe_allow_html=True
-            )
-        if st.button(f"{icon}  {label}", use_container_width=True):
-            st.session_state["page"] = label
-            st.rerun()
+with nav_cols[0]:
+    if st.button("🎯  Target List", use_container_width=True):
+        st.session_state["page"] = "Target List"
+with nav_cols[1]:
+    if st.button("👨‍⚕️  Physician Profile", use_container_width=True):
+        st.session_state["page"] = "Physician Profile"
+with nav_cols[2]:
+    if st.button("📊  Model Validation", use_container_width=True):
+        st.session_state["page"] = "Model Validation"
 # ── Read active page ───────────────────────────────────────────────────────────
 page = st.session_state.get("page", "Target List")
 # ══════════════════════════════════════════════════════════════════════════════
