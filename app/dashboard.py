@@ -114,12 +114,24 @@ targets, physician_df, interactions, ab_results = load_data()
 # ══════════════════════════════════════════════════════════════════════════════
 # SIDEBAR
 # ══════════════════════════════════════════════════════════════════════════════
+st.markdown("""
+    <div style="background:#0A2342; padding:10px 24px; border-radius:8px;
+                margin-bottom:16px; display:flex; align-items:center;
+                justify-content:space-between;">
+        <div style="color:white; font-size:15px; font-weight:600;">
+            💊 GLP-1 Sales Intelligence Platform
+        </div>
+        <div style="font-size:12px; color:#8FB3D9;">
+            ← Use sidebar to navigate · click arrow to reopen
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 with st.sidebar:
     st.markdown("""
         <div style="padding: 8px 0 24px 0;">
             <div style="font-size:11px; font-weight:600; color:#4A7FA5;
                         letter-spacing:1.5px; text-transform:uppercase;">
-                ZS Associates Style
+                Professional Style
             </div>
             <div style="font-size:20px; font-weight:700; color:white;
                         margin-top:4px; line-height:1.2;">
