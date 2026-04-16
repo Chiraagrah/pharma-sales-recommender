@@ -34,7 +34,7 @@ st.markdown("""
         color: white; padding: 6px 14px; border-radius: 20px;
         font-size: 12px; font-weight: 500;
     }
-    div.stButton > button {
+   div.stButton > button {
         background: white;
         border: 1px solid #E2E8F0;
         color: #0A2342;
@@ -45,9 +45,17 @@ st.markdown("""
         transition: all 0.2s;
     }
     div.stButton > button:hover {
-        background: #0A2342;
-        color: white;
-        border-color: #0A2342;
+        background: #E8F0FB;
+        color: #0A2342;
+        border-color: #1B4F8A;
+    }
+    div.stButton > button:focus,
+    div.stButton > button:active,
+    div.stButton > button:focus:not(:active) {
+        background: #0A2342 !important;
+        color: white !important;
+        border-color: #0A2342 !important;
+        box-shadow: none !important;
     }
     .metric-row { display: flex; gap: 16px; margin-bottom: 24px; }
     .metric-card {
