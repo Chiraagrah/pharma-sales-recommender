@@ -83,6 +83,15 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer    {visibility: hidden;}
     header    {visibility: hidden;}
+    [data-testid="collapsedControl"] {
+    display: none !important;
+    }
+    section[data-testid="stSidebar"] {
+        min-width: 250px !important;
+        max-width: 250px !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -114,18 +123,7 @@ targets, physician_df, interactions, ab_results = load_data()
 # ══════════════════════════════════════════════════════════════════════════════
 # SIDEBAR
 # ══════════════════════════════════════════════════════════════════════════════
-st.markdown("""
-    <div style="background:#0A2342; padding:10px 24px; border-radius:8px;
-                margin-bottom:16px; display:flex; align-items:center;
-                justify-content:space-between;">
-        <div style="color:white; font-size:15px; font-weight:600;">
-            💊 GLP-1 Sales Intelligence Platform
-        </div>
-        <div style="font-size:12px; color:#8FB3D9;">
-            ← Use sidebar to navigate · click arrow to reopen
-        </div>
-    </div>
-""", unsafe_allow_html=True)
+
 with st.sidebar:
     st.markdown("""
         <div style="padding: 8px 0 24px 0;">
