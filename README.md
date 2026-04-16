@@ -119,7 +119,7 @@ pharma-sales-recommender/
 ## Running Locally
 
 ```bash
-git clone https://github.com/your-username/pharma-sales-recommender
+git clone https://github.com/Chiraagrah/pharma-sales-recommender
 cd pharma-sales-recommender
 pip install -r requirements.txt
 streamlit run app/dashboard.py
