@@ -116,15 +116,23 @@ targets, physician_df, interactions, ab_results = load_data()
 
 # ── Top header with horizontal nav ────────────────────────────────────────────
 # ── Navigation header ──────────────────────────────────────────────────────────
-st.markdown('<div style="background:#0A2342;padding:14px 24px;border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;"><div><div style="font-size:16px;font-weight:700;color:white;">💊 GLP-1 Sales Intelligence Platform</div><div style="font-size:11px;color:#8FB3D9;margin-top:2px;">Tirzepatide · California Medicare · 2023 · CMS Part D Data · 15,289 Physicians</div></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><a href="?nav=Target+List" style="background:rgba(255,255,255,0.12);color:white;padding:7px 18px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.25);">🎯 Target List</a><a href="?nav=Physician+Profile" style="background:rgba(255,255,255,0.12);color:white;padding:7px 18px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.25);">👨‍⚕️ Physician Profile</a><a href="?nav=Model+Validation" style="background:rgba(255,255,255,0.12);color:white;padding:7px 18px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.25);">📊 Model Validation</a></div></div>', unsafe_allow_html=True)
+# ── Navigation header ──────────────────────────────────────────────────────────
+st.markdown('<div style="background:#0A2342;padding:14px 24px;border-radius:8px;margin-bottom:20px;"><div style="font-size:16px;font-weight:700;color:white;">💊 GLP-1 Sales Intelligence Platform</div><div style="font-size:11px;color:#8FB3D9;margin-top:4px;">Tirzepatide · California Medicare · 2023 · CMS Part D Data · 15,289 Physicians</div></div>', unsafe_allow_html=True)
 
+# ── Nav buttons ────────────────────────────────────────────────────────────────
+nav_cols = st.columns(3)
+with nav_cols[0]:
+    if st.button("🎯  Target List", use_container_width=True):
+        st.session_state["page"] = "Target List"
+with nav_cols[1]:
+    if st.button("👨‍⚕️  Physician Profile", use_container_width=True):
+        st.session_state["page"] = "Physician Profile"
+with nav_cols[2]:
+    if st.button("📊  Model Validation", use_container_width=True):
+        st.session_state["page"] = "Model Validation"
 
-# ── Read active page from URL params ──────────────────────────────────────────
-nav = st.query_params.get("nav", "Target List")
-if nav not in ["Target List", "Physician Profile", "Model Validation"]:
-    nav = "Target List"
-page = nav
-
+# ── Read active page ───────────────────────────────────────────────────────────
+page = st.session_state.get("page", "Target List")
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 1 — TARGET LIST
 # ══════════════════════════════════════════════════════════════════════════════
